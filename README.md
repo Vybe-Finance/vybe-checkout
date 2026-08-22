@@ -6,6 +6,20 @@ Most stacks treat “checkout” and “agent commerce” as two products. Vybe 
 
 Settlement is **USDC / USDT** (Base, Ethereum, BNB). Not card acquiring. Built for merchants who want stablecoin rails **and** a path agents can actually pay.
 
+[![skills.sh](https://skills.sh/b/Vybe-Finance/vybe-checkout)](https://skills.sh/Vybe-Finance/vybe-checkout)
+
+## Install via skills.sh (recommended)
+
+[skills.sh](https://skills.sh) is the open Agent Skills directory (Vercel). **No submission form** — public GitHub + valid `SKILL.md` + installs via the CLI.
+
+```bash
+npx skills add Vybe-Finance/vybe-checkout -g -y
+```
+
+Installs to Cursor, Claude Code, Codex, Copilot, and [70+ agents](https://skills.sh/docs). Leaderboard rank comes from anonymous install counts.
+
+---
+
 ---
 
 ## Why this matters
@@ -51,7 +65,7 @@ Cursor also reads `.claude/skills/` and `.codex/skills/`, so one clone can cover
 
 ---
 
-## Install this skill
+## Install (manual / git clone)
 
 ### Cursor (this project)
 
