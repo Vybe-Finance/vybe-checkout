@@ -34,6 +34,23 @@ Human rails on the hosted page: Vybe Wallet, WalletConnect, direct transfer, age
 
 ---
 
+## Works in these AI tools (Agent Skills standard)
+
+Portable **`SKILL.md`** — [Agent Skills open standard](https://agentskills.io). Same repo, multiple agents:
+
+| AI tool | Project | Global |
+|---------|---------|--------|
+| **[Cursor](https://cursor.com)** | `.cursor/skills/vybe-checkout/` | `~/.cursor/skills/vybe-checkout/` |
+| **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** | `.claude/skills/vybe-checkout/` | `~/.claude/skills/vybe-checkout/` |
+| **[OpenAI Codex CLI](https://developers.openai.com/codex)** | `.codex/skills/vybe-checkout/` | `~/.codex/skills/vybe-checkout/` |
+| **Cross-client** | `.agents/skills/vybe-checkout/` | `~/.agents/skills/vybe-checkout/` |
+
+**Also supports Agent Skills format** (paths vary): GitHub Copilot Agent mode, Gemini CLI, Goose, Roo Code, Cline, Amp, Windsurf — see [agentskills.io](https://agentskills.io).
+
+Cursor also reads `.claude/skills/` and `.codex/skills/`, so one clone can cover multiple tools.
+
+---
+
 ## Install this skill
 
 ### Cursor (this project)
