@@ -8,14 +8,16 @@ description: >-
   vybe_col_, hosted crypto checkout, /r/ payment links, merchant Collect API,
   or cart total USDC checkout.
 metadata:
-  version: 1.1.0
+  version: 1.1.1
 ---
 
 # Vybe Native Checkout (merchant integration)
 
 You are integrating **Vybe Native Checkout** — Collect’s merchant door. Not a fourth product. Settlement is **USDC/USDT**, not card acquiring.
 
-**Canonical origin:** `https://www.vybe.finance` (prefer **www** for TLS).
+**Canonical origin:** `https://www.vybe.finance` (use **www** in snippets).
+
+For HTTP 402 on your own API / buildathons, see **vybe-collect** and https://www.vybe.finance/collect/hackathon — this skill is hosted `/r/` checkout sessions.
 
 ## When to use this vs Collect
 
@@ -82,11 +84,37 @@ Content-Type: application/json
 
 Or `line_items[0].price_data` with `unit_amount` + `product_data.name`.
 
+**Multi-SKU cart** (catalog offerings):
+
+```http
+POST https://www.vybe.finance/api/checkout/sessions
+Authorization: Bearer vybe_col_…
+Content-Type: application/json
+
+{
+  "mode": "payment",
+  "line_items": [
+    { "offering_id": "svc_A", "quantity": 2 },
+    { "offering_id": "svc_B", "variant_id": "var_…", "quantity": 1 }
+  ],
+  "shipping_amount": "5.00",
+  "shipping_address": {
+    "name": "Buyer",
+    "line1": "1 Main St",
+    "city": "Lagos",
+    "country": "NG"
+  },
+  "metadata": { "order_id": "ord_123" }
+}
+```
+
 **Constraints (do not invent):**
 
-- One line item; `quantity` max **1** today
-- Currencies: `usdc` | `usdt`
+- Up to **50** line items; `quantity` **1–99** per line
+- All catalog lines must share the same token (`usdc` | `usdt`)
+- Shippable offerings require `shipping_address.line1`
 - Amounts: decimal strings up to 6 fractional digits
+- Shopify: Business → Products → Shopify (Admin API token) syncs into Collect; `payment.paid` can complete a draft order
 
 ### Step 2 — Handle create response
 
@@ -184,6 +212,8 @@ Match the host app’s language/framework; keep the same HTTP contract.
 
 - API fields, webhook signature, retrieve — [reference.md](reference.md)
 - Product docs: https://www.vybe.finance/checkout
+- Collect / 402 hackathon path: https://www.vybe.finance/collect/hackathon
 - Blog: https://www.vybe.finance/blog/vybe-checkout-humans-and-agents
-- OpenAPI: https://www.vybe.finance/mobiledocs
+- OpenAPI: https://www.vybe.finance/collect/openapi
 - Agent brief: https://www.vybe.finance/llms.txt
+- Collect skill: https://github.com/Vybe-Finance/vybe-collect
